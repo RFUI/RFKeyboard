@@ -12,8 +12,7 @@ before_install:
 - pod repo update master
 - pod install
 script:
-# https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
-- set -euxo pipefail
+- set -o pipefail
 - pod lib lint --use-libraries --allow-warnings
 after_success:
   - bash <(curl -s https://codecov.io/bash)
