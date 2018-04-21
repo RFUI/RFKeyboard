@@ -1,0 +1,8 @@
+//
+//  RFUI-Config.xcconfig
+//  RFUI
+//
+//  Copyright © 2018 RFUI. All rights reserved.
+//
+
+WARNING_CFLAGS = -Weverything -Wno-gnu-statement-expression -Wno-gnu-conditional-omitted-operand -Wno-auto-import -Wno-sign-conversion -Wno-sign-compare -Wno-objc-missing-property-synthesis
