@@ -44,17 +44,19 @@
 }
 
 + (CGFloat)keyboardLayoutHeightForNotification:(NSNotification *)note inView:(UIView *)view {
-    if (!note.userInfo[UIKeyboardFrameEndUserInfoKey]) {
+    NSValue *frameValue = note.userInfo[UIKeyboardFrameEndUserInfoKey];
+    if (!frameValue) {
         dout_warning(@"Cannot get keyboard frame info for %@", note);
         return -1;
     }
-    CGRect frame = [note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGRect frame = frameValue.CGRectValue;
     if (![RFKeyboard isUndocked:frame]) {
         return 0;
     }
 
     CGRect normalizedFrame = [self convertKeyboardFrame:frame toView:view];
-    return normalizedFrame.size.height;
+    CGFloat sizeInView = CGRectGetMaxY(view.bounds) - CGRectGetMinY(normalizedFrame);
+    return sizeInView < 0 ? 0 : sizeInView;
 }
 
 #pragma mark - experimental below

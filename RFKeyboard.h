@@ -1,7 +1,7 @@
 /*!
  RFKeyboard
  
- Copyright (c) 2012-2014, 2018 BB9z
+ Copyright (c) 2012-2014, 2018, 2020 BB9z
  https://github.com/RFUI/RFKeyboard
  
  The MIT License (MIT)
@@ -15,7 +15,7 @@
 + (nonnull instancetype)defaultManager;
 
 /**
- @abstract Converts a keyboardRect via a UIKeyboard notification to the view´s coordinate system.
+ Converts a keyboardRect via a UIKeyboard notification to the view´s coordinate system.
  
  @param keyboardRect Keyboard frame rect, usually from an UIKeyboard notification´s userinfo[UIKeyboardFrameEndUserInfoKey].
  
@@ -24,7 +24,7 @@
 + (CGRect)convertKeyboardFrame:(CGRect)keyboardRect toView:(nullable UIView *)view;
 
 /**
- @abstract Check whether the keyboard is docked or not.
+ Check whether the keyboard is docked or not.
  
  @param keyboardRect Keyboard frame rect, usually from an UIKeyboard notification´s userinfo[UIKeyboardFrameEndUserInfoKey].
  
@@ -41,7 +41,7 @@
  */
 @property (class, nonatomic) BOOL autoDisimssKeyboardWhenTouch;
 
-/// Experimental, only called when AutoDisimssKeyboardWhenTouch
+/// Experimental, only called when autoDisimssKeyboardWhenTouch is enabled.
 @property (nullable) void (^keyboardShowCallback)(NSNotification *__nonnull note);
 @property (nullable) void (^keyboardHideCallback)(NSNotification *__nonnull note);
 @end
