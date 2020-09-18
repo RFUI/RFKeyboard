@@ -18,7 +18,7 @@
     static RFKeyboard *sharedInstance = nil;
     static dispatch_once_t oncePredicate;
     dispatch_once(&oncePredicate, ^{
-        sharedInstance = [[self alloc] init];
+        sharedInstance = self.new;
     });
     return sharedInstance;
 }
@@ -46,7 +46,7 @@
 + (CGFloat)keyboardLayoutHeightForNotification:(NSNotification *)note inView:(UIView *)view {
     NSValue *frameValue = note.userInfo[UIKeyboardFrameEndUserInfoKey];
     if (!frameValue) {
-        dout_warning(@"Cannot get keyboard frame info for %@", note);
+        dout_warning(@"Cannot get keyboard frame info for %@", note)
         return -1;
     }
     CGRect frame = frameValue.CGRectValue;
@@ -62,12 +62,11 @@
 #pragma mark - experimental below
 
 + (BOOL)autoDisimssKeyboardWhenTouch {
-    return [self.defaultManager enableAutoDisimssKeyboardWhenTouch];
+    return [(RFKeyboard *)self.defaultManager enableAutoDisimssKeyboardWhenTouch];
 }
 
 + (void)setAutoDisimssKeyboardWhenTouch:(BOOL)autoDisimssKeyboardWhenTouch {
-    [self.defaultManager setEnableAutoDisimssKeyboardWhenTouch:autoDisimssKeyboardWhenTouch
-     ];
+    [(RFKeyboard *)self.defaultManager setEnableAutoDisimssKeyboardWhenTouch:autoDisimssKeyboardWhenTouch];
 }
 
 - (void)setEnableAutoDisimssKeyboardWhenTouch:(BOOL)enabled {
@@ -78,10 +77,10 @@
                     [self setupKeyWindowGestureRecognizers];
                 }
 
-                @weakify(self);
+                @weakify(self)
                 self.keyboardShowObserver = [[NSNotificationCenter defaultCenter] addObserverForName:UIKeyboardWillShowNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
-                    @strongify(self);
-                    CGRect frame = [note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+                    @strongify(self)
+                    CGRect frame = [(NSValue *)note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
                     if (![RFKeyboard isUndocked:frame]) {
                         return;
                     }
@@ -95,7 +94,7 @@
                     }
                 }];
                 self.keyboardHideObserver = [[NSNotificationCenter defaultCenter] addObserverForName:UIKeyboardWillHideNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
-                    @strongify(self);
+                    @strongify(self)
                     self.tapInWindowGestureRecognizer.enabled = NO;
                     self.panInWindowGestureRecognizer.enabled = NO;
 
@@ -159,7 +158,7 @@
     if (![self tryAddGestureRecognizerToKeyWindow]) {
         dispatch_after_seconds(1, ^{
             if (![self tryAddGestureRecognizerToKeyWindow]) {
-                dout_warning(@"RFKeyboard: Cannot find root window to add gesture recognizer.");
+                dout_warning(@"RFKeyboard: Cannot find root window to add gesture recognizer.")
             }
         });
     }

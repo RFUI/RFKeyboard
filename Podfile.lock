@@ -1,21 +1,25 @@
 PODS:
-  - RFKeyboard (0.1.0):
+  - RFKeyboard (0.3.0):
     - RFKit/Runtime (>= 1.7)
-  - RFKit/Foundation (1.7.1)
-  - RFKit/Runtime (1.7.1):
+  - RFKit/Foundation (2.4.0)
+  - RFKit/Runtime (2.4.0):
     - RFKit/Foundation
 
 DEPENDENCIES:
   - RFKeyboard (from `.`)
 
+SPEC REPOS:
+  trunk:
+    - RFKit
+
 EXTERNAL SOURCES:
   RFKeyboard:
-    :path: .
+    :path: "."
 
 SPEC CHECKSUMS:
-  RFKeyboard: 6229bb8fd540874b60f89b6a7b55e48460c79540
-  RFKit: 3c5f2a181777dfeb57b0ea1a004a8ce02d7445ee
+  RFKeyboard: 673a594ea5d27bb597e1501858b29007f5daeff5
+  RFKit: b85177e1321171cfb342810880555a06fe12fbbe
 
-PODFILE CHECKSUM: 4ada3396c589262e0e084a8e384a2d36eaa3b695
+PODFILE CHECKSUM: 8e0f8de8c85579351f34b6398c45fa653fa88f40
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.9.3

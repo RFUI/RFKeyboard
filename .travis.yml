@@ -1,5 +1,5 @@
 language: objective-c
-sudo: false
+os: osx
 cache: cocoapods
 env:
   global:
@@ -7,7 +7,7 @@ env:
   - LANG=en_US.UTF-8
   - LANGUAGE=en_US.UTF-8
   - RFCI_PRODUCT_NAME="RFKeyboard"
-matrix:
+jobs:
   include:
     - osx_image: xcode11
       env: RFCI_TASK="POD_LINT"

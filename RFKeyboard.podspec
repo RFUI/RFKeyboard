@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'RFKeyboard'
-  s.version          = '0.2.0'
+  s.version          = '0.3.0'
   s.summary          = 'iOS Keyboard helper.'
 
   s.homepage         = 'https://github.com/RFUI/RFKeyboard'
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/RFUI/RFKeyboard.git', :tag => s.version.to_s }
 
   s.requires_arc = true
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
 
   s.source_files = ['RFKeyboard.{h,m}']
   s.public_header_files = ['RFKeyboard.h']
