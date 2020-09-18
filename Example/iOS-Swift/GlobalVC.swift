@@ -9,14 +9,16 @@
 /**
  
  */
-class GlobalViewController: UIViewController {
+final class GlobalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         enableSwitch.isOn = RFKeyboard.autoDisimssKeyboardWhenTouch
     }
     
-    @IBOutlet weak var enableSwitch: UISwitch!
-    @IBAction func onSwitchChanged(_ sender: Any) {
+    @IBOutlet weak var textField: UITextField!
+    @IBOutlet private weak var enableSwitch: UISwitch!
+    @IBAction private func onSwitchChanged(_ sender: Any) {
+        textField.resignFirstResponder()
         RFKeyboard.autoDisimssKeyboardWhenTouch = enableSwitch.isOn
     }
 }
