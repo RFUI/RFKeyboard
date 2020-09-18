@@ -59,6 +59,13 @@
     return sizeInView < 0 ? 0 : sizeInView;
 }
 
++ (void)viewAnimateWithNotification:(NSNotification *)note animations:(void (^)(void))animations completion:(void (^)(BOOL))completion {
+    NSDictionary *info = note.userInfo;
+    NSTimeInterval duration = [(NSNumber *)info[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    UIViewAnimationCurve curve = [(NSNumber *)info[UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    [UIView animateWithDuration:duration delay:0 options:curve animations:animations completion:completion];
+}
+
 #pragma mark - experimental below
 
 + (BOOL)autoDisimssKeyboardWhenTouch {

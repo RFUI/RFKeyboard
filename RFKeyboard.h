@@ -1,4 +1,4 @@
-/*!
+/*
  RFKeyboard
  
  Copyright (c) 2012-2014, 2018, 2020 BB9z
@@ -32,7 +32,15 @@
  */
 + (BOOL)isUndocked:(CGRect)keyboardRect;
 
+/**
+ Returns the keyboard height converted into the given view's coordinate system.
+ */
 + (CGFloat)keyboardLayoutHeightForNotification:(nonnull NSNotification *)note inView:(nullable UIView *)view;
+
+/**
+ Performs a view animation using the options generated from a keyboard notifictation.
+ */
++ (void)viewAnimateWithNotification:(nonnull NSNotification *)note animations:(void (^__nonnull)(void))animations completion:(void (^ __nullable)(BOOL finished))completion;
 
 /**
  If set YES, the keyboard will dismiss if user tap or pan if needed.
